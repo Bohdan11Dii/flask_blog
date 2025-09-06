@@ -1,0 +1,69 @@
+{% extends "registration/base.html" %}
+{% block content %}
+  <section>
+    <div class="login-container">
+      {% if  subtitle %}
+        <h1>{{ subtitle }}</h1>
+      {% else %}
+        <h1>Flask Blog</h1>
+      {% endif %}
+      <form method="post" action="">
+        {{ form.hidden_tag() }}
+        <div class="input-box">
+            <span class="icon">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          {{ form.email }}
+          {% if form.email.errors %}
+            <ul class=errors>
+              {% for error in form.email.errors %}
+                <li style="color: red">{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {{ form.email.label }}
+        </div>
+        <div class="input-box">
+            <span class="icon">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </span>
+          {{ form.password }}
+          {% if form.password.errors %}
+            <ul class=errors>
+              {% for error in form.password.errors %}
+                <li style="color: red">{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {{ form.password.label }}
+        </div>
+        {{ form.submit(class="button") }}
+        <div class="remember-forgot">
+          <div>
+            {{ form.remember }}
+            {{ form.remember.label }}
+          </div>
+          <small>
+            <a href="">Forgot Password?</a>
+          </small>
+        </div>
+
+        {##}
+        {#      <div class="remember-forgot">#}
+        {#        <label>#}
+        {#          <input type="checkbox"> Recordarme#}
+        {#        </label>#}
+        {##}
+        {#        <a href="#">Olvidé la contraseña</a>#}
+        {#      </div>#}
+        {##}
+        {#      <button type="submit">Iniciar sesión</button>#}
+      </form>
+
+      <div class="create-account">
+        <a href="{{ url_for('register') }}">Need an account? Sign Up Now</a>
+      </div>
+
+    </div>
+  </section>
+{% endblock %}
