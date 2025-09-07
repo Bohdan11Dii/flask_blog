@@ -6,24 +6,20 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
   <link href="{{ url_for('static', filename='css/registration.css') }}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/alert.css') }}">
   <title>Inicio de sesión</title>
 </head>
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">
-       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        {{ message }}
 
-      </div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 <body>
+
+{% block alert_box %}
+  {% include "includes/alert_box.html" %}
+{% endblock %}
+
 {% block content %}
 {% endblock %}
 
-
+<script src="{{ url_for('static', filename='js/alert.js') }}"></script>
 </body>
 </html>

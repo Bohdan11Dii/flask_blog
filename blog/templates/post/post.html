@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/posts.css') }}">
+
+  <!-- Main Content-->
+  <div class="posts-container">
+
+    <div class="post-card">
+      <div class="post-header">
+        <img class="author-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+        <div class="author-info">
+          <span class="author-name">{{ post.author.username }}</span>
+          <span class="post-date">{{ post.date_post.strftime("%Y-%m-%d") }}</span>
+          {% if post.author == current_user %}
+            <div>
+              <a href="{{ url_for('update_post', post_id=post.id) }}" class="btn-custom update-btn">✏️ Update</a>
+              <button class="btn-custom delete-btn" onclick="openModal({{ post.id }}, '{{ post.title }}')">🗑 Delete
+              </button>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="post-body">
+        <span class="author-name">{{ post.title }}</span>
+
+        <p class="post-content">
+          {{ post.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Глобальне модальне вікно -->
+  <div id="globalModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Delete post?</h2>
+      <p>This action cannot be undone.</p>
+      <div class="modal-actions">
+        <form  method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+          <input class="btn-confirm" type="submit" value="Delete">
+
+        </form>
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+

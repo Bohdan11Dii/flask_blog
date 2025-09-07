@@ -1,0 +1,67 @@
+.account-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.account-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.account-img {
+    border-radius: 50%;
+    border: 3px solid #6c63ff;
+    margin-right: 20px;
+}
+
+.account-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.account-email {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+form legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    transition: all 0.2s;
+}
+
+form .form-control:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+.btn-update {
+    background: #6c63ff;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background 0.3s;
+}
+
+.btn-update:hover {
+    background: #574fcf;
+}
